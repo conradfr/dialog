@@ -52,7 +52,7 @@ func (d filedlg) Filename() string {
 }
 
 func (b *FileBuilder) load() (string, error) {
-	d := openfile(w32.OFN_FILEMUSTEXIST, b)
+	d := openfile(w32.OFN_FILEMUSTEXIST|w32.OFN_SHAREAWARE, b)
 	if w32.GetOpenFileName(d.opf) {
 		return d.Filename(), nil
 	}
